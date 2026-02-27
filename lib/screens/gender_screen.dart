@@ -39,7 +39,17 @@ class _GenderScreenState extends State<GenderScreen> {
       loading = false;
     });
   }
-
+Widget fadeSlideIn({required bool show, required Widget child}) {
+  return AnimatedSlide(
+    duration: const Duration(milliseconds: 250),
+    offset: show ? Offset.zero : const Offset(0, 0.05),
+    child: AnimatedOpacity(
+      duration: const Duration(milliseconds: 250),
+      opacity: show ? 1 : 0,
+      child: child,
+    ),
+  );
+}
   @override
   Widget build(BuildContext context) {
     Color backgroundColor = Colors.white;
